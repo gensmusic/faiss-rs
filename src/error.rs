@@ -20,6 +20,8 @@ pub enum Error {
     IndexDescription,
     /// Invalid file path.
     BadFilePath,
+    /// The number of GPU resources and devices do not match.
+    GpuResourcesMatch,
 }
 
 impl fmt::Display for Error {
@@ -32,9 +34,10 @@ impl StdError for Error {
     fn description(&self) -> &str {
         match *self {
             Error::Native(ref e) => &e.msg,
-            Error::BadCast => "Invalid index type cast",
-            Error::IndexDescription => "Invalid index description",
-            Error::BadFilePath => "Invalid file path",
+            Error::BadCast => "invalid index type cast",
+            Error::IndexDescription => "invalid index description",
+            Error::BadFilePath => "invalid file path",
+            Error::GpuResourcesMatch => "gpu resources and devices do not match"
         }
     }
 }
