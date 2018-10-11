@@ -1594,20 +1594,20 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
+    /// converts any CPU index that can be converted to GPU
     pub fn faiss_index_cpu_to_gpu_multiple(
-        resources_vec: *mut *mut FaissGpuResources,
-        resources_vec_size: usize,
-        devices: *mut ::std::os::raw::c_int,
+        resources_vec: *const *mut FaissGpuResources,
+        devices: *const ::std::os::raw::c_int,
         devices_size: usize,
         index: *const FaissIndex,
         p_out: *mut *mut FaissGpuIndex,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
+    /// converts any CPU index that can be converted to GPU
     pub fn faiss_index_cpu_to_gpu_multiple_with_options(
-        resources_vec: *mut *mut FaissGpuResources,
-        resources_vec_size: usize,
-        devices: *mut ::std::os::raw::c_int,
+        resources_vec: *const *mut FaissGpuResources,
+        devices: *const ::std::os::raw::c_int,
         devices_size: usize,
         index: *const FaissIndex,
         options: *const FaissGpuMultipleClonerOptions,
