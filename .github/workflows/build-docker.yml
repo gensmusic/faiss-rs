@@ -1,0 +1,31 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+    paths:
+      - 'misc/build.Dockerfile'
+  pull_request:
+    branches:
+      - master
+      - dev
+    paths:
+      - 'misc/build.Dockerfile'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: check out code
+      - uses: mr-smithers-excellent/docker-build-push@v3
+        name: Build & push faiss-sys binding docker image
+        with:
+          # TODO replace docker repo, username and password
+          image: gensmusic/faiss-rs-build
+          tag: latest
+          registry: docker.io
+          dockerfile: 'misc/build.Dockerfile'
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
