@@ -21,8 +21,8 @@ branch = "master"
 repository = "Enet4/faiss-rs"
 
 [dependencies.faiss-sys]
-version = "0.3.0"
-path = "faiss-sys"
+#version = "0.3.0"
+path = "./faiss-sys"
 
 [package.metadata.docs.rs]
 features = ["gpu"]
